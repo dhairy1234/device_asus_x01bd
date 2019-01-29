@@ -1,4 +1,4 @@
-# Device Tree for Asus Zenfone Max Pro M1
+# Device Tree for Asus Zenfone Max Pro M2
 The Asus Zenfone Max Pro M2 (codenamed _"ASUS_X01BD"_) is mid-range smartphone from Asus.
 Asus Zenfone Max Pro M2 was announced in December 2018 and released in December 18, 2018.
 
