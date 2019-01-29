@@ -1,57 +1,50 @@
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
 	af.fast_track_multiplier=1 \
-	audio.deep_buffer.media=true \
-	audio.offload.min.duration.secs=30 \
-	audio.offload.video=true \
-	persist.vendor.audio.fluence.speaker=false \
+	vendor.audio_hal.period_size=192 \
+	ro.vendor.audio.sdk.fluencetype=fluence \
 	persist.vendor.audio.fluence.voicecall=true \
 	persist.vendor.audio.fluence.voicerec=true \
-	persist.vendor.audio.hifi.int_codec=true \
+	persist.vendor.audio.fluence.speaker=false \
+	vendor.audio.tunnel.encode=false \
 	persist.vendor.audio.ras.enabled=false \
-	ro.vendor.audio.sdk.fluencetype=fluence  \
-	ro.vendor.audio.sdk.ssr=false \
+	vendor.audio.offload.buffer.size.kb=64 \
+	audio.offload.min.duration.secs=30 \
+	audio.offload.video=true \
+	vendor.audio.offload.track.enable=true \
+	audio.deep_buffer.media=true \
+	vendor.audio.offload.multiaac.enable=true \
 	vendor.audio.dolby.ds2.enabled=false \
 	vendor.audio.dolby.ds2.hardbypass=false \
-	vendor.audio.flac.sw.decoder.24bit=true \
-	vendor.audio.hw.aac.encoder=true \
-	vendor.audio.noisy.broadcast.delay=600 \
-	vendor.audio.offload.buffer.size.kb=64 \
-	vendor.audio.offload.gapless.enabled=true \
-	vendor.audio.offload.multiaac.enable=true \
 	vendor.audio.offload.multiple.enabled=false \
 	vendor.audio.offload.passthrough=false \
-	vendor.audio.offload.pstimeout.secs=3 \
-	vendor.audio.offload.track.enable=true \
-	vendor.audio.parser.ip.buffer.size=262144 \
+	ro.vendor.audio.sdk.ssr=false \
+	vendor.audio.offload.gapless.enabled=true \
 	vendor.audio.safx.pbe.enabled=true \
-	vendor.audio.tunnel.encode=false \
+	vendor.audio.parser.ip.buffer.size=262144 \
+	vendor.audio.flac.sw.decoder.24bit=true \
+	vendor.audio.noisy.broadcast.delay=600 \
+	persist.vendor.audio.hifi.int_codec=true \
+	vendor.audio.offload.pstimeout.secs=3 \
 	vendor.audio.use.sw.alac.decoder=true \
 	vendor.audio.use.sw.ape.decoder=true \
-	vendor.audio_hal.period_size=192 \
+	vendor.audio.hw.aac.encoder=true \
 	vendor.voice.path.for.pcm.voip=false
-
-# Bluetooth
-PRODUCT_PROPERTY_OVERRIDES += \
-	bt.max.hfpclient.connections=1 \
-	persist.bt.a2dp.aac_disable=true \
-	persist.bt.enable.multicast=1 \
-	persist.bt.hfp.playbackforvr=false \
-	persist.bt.hfp.playbackforvoip=false \
-	persist.bt.max.a2dp.connections=2 \
-	persist.bt.max.hs.connections=2 \
-	persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
-	qcom.bluetooth.soc=cherokee \
-	ro.bluetooth.emb_wp_mode=true \
-	ro.bluetooth.wipower=true
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.camera.expose.aux=1 \
 	persist.camera.HAL3.enabled=1 \
 	persist.camera.preview.ubwc=0 \
-	persist.ts.rtmakeup=1 \
-	vendor.camera.aux.packagelist=org.codeaurora.snapcam
+	persist.ts.rtmakeup=1
+
+# Bluetooth
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.bt.max.hs.connections=2 \
+	persist.bt.max.a2dp.connections=2 \
+	persist.bt.enable.multicast=1 \
+	persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
+	qcom.bluetooth.soc=cherokee
 
 # Charging maximum voltage
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -69,6 +62,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.heaptargetutilization=0.75 \
 	dalvik.vm.heapminfree=512k \
 	dalvik.vm.heapmaxfree=8m
+
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -125,24 +119,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	vidc.enc.dcvs.extra-buff-count=2 \
 	vidc.enc.target_support_bframe=1
 
-# Misc
+# FRP
 PRODUCT_PROPERTY_OVERRIDES += \
-	keyguard.no_require_sim=true \
-	persist.vendor.qcomsysd.enabled=1 \
-	ro.additionalbutton.operation=0 \
-	ro.am.reschedule_service=true \
-	ro.control_privapp_permissions=log \
-	ro.opa.eligible_device=true \
-	ro.sys.fw.use_trim_settings=true
+	ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
-# Netflix
+# FUSE
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.netflix.bsp_rev=Q660-13149-1
-
-# NFC
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.nfc.port=I2C \
-	persist.nfc.smartcard.config=SIM1
+	persist.fuse_sdcard=true
 
 # NTP Server
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -160,29 +143,31 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.vendor.qti.core_ctl_min_cpu=2 \
 	ro.vendor.qti.sys.fw.bg_apps_limit=60
 
+# NFC
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.hardware.nfc_nci=nqx.default \
+	ro.nfc.port=I2C \
+	persist.nfc.smartcard.config=SIM1 
+
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-	DEVICE_PROVISIONED=1 \
-	persist.data.iwlan.enable=true \
-	persist.dbg.volte_avail_ovr=1 \
-	persist.radio.atfwd.start=true \
-	persist.radio.multisim.config=dsds \
-	persist.radio.plmn_disable_data=true \
-	persist.radio.schd.cache=3500 \
-	persist.radio.VT_CAM_INTERFACE=1 \
-	persist.radio.VT_CAM_INTERFACE=2 \
-	persist.vendor.qti.telephony.vt_cam_interface=1 \
 	persist.vendor.radio.apm_sim_not_pwdn=1 \
+	persist.vendor.radio.sib16_support=1 \
 	persist.vendor.radio.custom_ecc=1 \
 	persist.vendor.radio.rat_on=combine \
-	persist.vendor.radio.sib16_support=1 \
-	ril.subscription.types=NV,RUIM \
-	rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
+	persist.radio.schd.cache=3500 \
+	persist.radio.multisim.config=dsds \
+	rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so \
 	ro.carrier=unknown \
 	ro.com.android.dataroaming=false \
-	ro.config.vc_call_vol_steps=11 \
-	ro.telephony.default_network=20,20 \
-	telephony.lteOnCdmaDevice=1
+
+# MISC
+PRODUCT_PROPERTY_OVERRIDES += \
+	keyguard.no_require_sim=true \
+	persist.vendor.qcomsysd.enabled=1 \
+	ro.additionalbutton.operation=0 \
+	ro.control_privapp_permissions=log \
+	ro.opa.eligible_device=true \
 
 # RmNet Data
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -195,25 +180,23 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.data.df.ul_mode=5 \
 	persist.data.wda.enable=true \
 	persist.rmnet.data.enable=true
-
+	
 # Sensor
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.sdk.sensors.gestures=false \
-	ro.vendor.sensors.cmc=false \
-	ro.vendor.sensors.dev_ori=true \
 	ro.vendor.sensors.facing=false \
-	ro.vendor.sensors.mot_detect=true \
-	ro.vendor.sensors.pmd=true \
-	ro.vendor.sensors.sta_detect=true
-
-# Skip Validate Disable
-PRODUCT_PROPERTY_OVERRIDES += \
-	sdm.debug.disable_skip_validate=1
+	ro.vendor.sensors.cmc=false \
+	ro.vendor.sdk.sensors.gestures=false
 
 # Shutdown
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.build.shutdown_timeout=0 \
-	sys.vendor.shutdown.waittime=500
+PRODUCT_PROPERTY_OVERRIDES += \	
+	sys.vendor.shutdown.waittime=500 \
+	ro.build.shutdown_timeout=0
+
+# Setupwizard
+PRODUCT_PROPERITIES_OVERRIDES += \
+	setupwizard.feature.deferred_setup_notification=false \
+	ro.setupwizard.suppress_d2d=false \
+	ro.setupwizard.suppress_d2d_nfc=true
 
 # System prop for UBWC
 PRODUCT_PROPERTY_OVERRIDES += \
