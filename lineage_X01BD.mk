@@ -18,8 +18,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common AOSP stuff
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+# Inherit some common LineageOS stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Inherit from X01BD device
 $(call inherit-product, device/ASUS/X01BD/device.mk)
@@ -33,7 +33,7 @@ TARGET_GAPPS_ARCH := arm64
 PRODUCT_BRAND := asus
 PRODUCT_DEVICE := X01BD
 PRODUCT_MANUFACTURER := asus
-PRODUCT_NAME := aosp_X01BD
+PRODUCT_NAME := lineage_X01BD
 PRODUCT_MODEL := Zenfone Max Pro M2
 
 
